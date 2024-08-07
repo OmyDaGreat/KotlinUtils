@@ -1,10 +1,8 @@
 package io.github.omydagreat.kotlinutils
 
-import io.github.oshai.kotlinlogging.KotlinLogging
+import org.lighthousegames.logging.logging
 
-private val logger = KotlinLogging.logger {}
-
-private const val message = "world"
 fun main() {
-    logger.debug { "hello $message" }
+    val log = logging()
+    log.i {"Hello World"}
 }

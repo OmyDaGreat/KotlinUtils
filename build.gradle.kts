@@ -7,18 +7,16 @@ version = "1.0"
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://jitpack.io") }
 }
 
-val kotlinVersion = "2.0.0"
-val kotlinLoggerVersion = "7.0.0"
+val kmlogVersion = "1.5.0"
 val slf4jVersion = "2.0.13"
-val log4jVersion = "2.23.1"
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation("io.github.oshai:kotlin-logging:$kotlinLoggerVersion")
-    implementation("org.slf4j:slf4j-api:$slf4jVersion")
-    implementation("org.apache.logging.log4j:log4j-core:$log4jVersion")
+    implementation("org.lighthousegames:logging:$kmlogVersion")
+    implementation("org.slf4j:slf4j-simple:$slf4jVersion")
 }
 
 tasks.test {
