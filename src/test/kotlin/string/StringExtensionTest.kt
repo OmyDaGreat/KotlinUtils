@@ -1,6 +1,6 @@
 package string
 
-import io.github.omydagreat.kotlinutils.string.titlecase
+import io.github.omydagreat.kotlinutils.string.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -49,5 +49,80 @@ class StringExtensionTest {
     @Test
     fun handlesWordsWithNumbers() {
         assertEquals("Hello 123 World", "hello 123 world".titlecase())
+    }
+
+    @Test
+    fun convertsEmptyStringToCamelCase() {
+        assertEquals("", "".toCamelCase())
+    }
+
+    @Test
+    fun convertsSingleWordToCamelCase() {
+        assertEquals("Hello", "hello".toCamelCase())
+    }
+
+    @Test
+    fun convertsMultipleWordsToCamelCase() {
+        assertEquals("HelloWorld", "hello world".toCamelCase())
+    }
+
+    @Test
+    fun handlesMixedCaseInputInCamelCase() {
+        assertEquals("HelloWorld", "hElLo wOrLd".toCamelCase())
+    }
+
+    @Test
+    fun handlesWordsWithPunctuationInCamelCase() {
+        assertEquals("Hello,World!", "hello, world!".toCamelCase())
+    }
+
+    @Test
+    fun handlesWordsWithNumbersInCamelCase() {
+        assertEquals("Hello123World", "hello 123 world".toCamelCase())
+    }
+
+    @Test
+    fun emptyStringIsNotEmail() {
+        assertEquals(false, "".isEmail())
+    }
+
+    @Test
+    fun validEmailIsEmail() {
+        assertEquals(true, "test@example.com".isEmail())
+    }
+
+    @Test
+    fun invalidEmailIsNotEmail() {
+        assertEquals(false, "test@.com".isEmail())
+    }
+
+    @Test
+    fun emptyStringIsNotNumeric() {
+        assertEquals(false, "".isNumeric())
+    }
+
+    @Test
+    fun numericStringIsNumeric() {
+        assertEquals(true, "12345".isNumeric())
+    }
+
+    @Test
+    fun nonNumericStringIsNotNumeric() {
+        assertEquals(false, "123a45".isNumeric())
+    }
+
+    @Test
+    fun emptyStringCapitalizesFirstLetter() {
+        assertEquals("", "".capitalizeFirstLetter())
+    }
+
+    @Test
+    fun singleLetterCapitalizesFirstLetter() {
+        assertEquals("A", "a".capitalizeFirstLetter())
+    }
+
+    @Test
+    fun multipleLettersCapitalizesFirstLetter() {
+        assertEquals("Hello", "hello".capitalizeFirstLetter())
     }
 }
