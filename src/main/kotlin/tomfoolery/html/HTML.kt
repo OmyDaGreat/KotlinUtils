@@ -11,50 +11,57 @@ import kotlinx.html.stream.createHTML
 
 var bool = true
 
-fun DIV.center(display: String = "flex", height: String = "100vh", fontSize: String = "16px", fontFamily: String = "Arial, sans-serif") {
-    style = "display: $display; justify-content: center; align-items: center; height: $height; font-size: $fontSize; font-family: $fontFamily;"
+fun DIV.center(
+    display: String = "flex",
+    flexDirection: String = "column",
+    height: String = "100vh",
+    fontSize: String = "16px",
+    fontFamily: String = "Arial, sans-serif"
+) {
+    style =
+        "display: $display; flex-direction: $flexDirection; justify-content: center; align-items: center; height: $height; font-size: $fontSize; font-family: $fontFamily;"
 }
 
-fun generateHTMLContent(boolValue: Boolean): String = createHTML().html {
-    head {
-        script {
-            unsafe {
-                +"""
-                function callKotlinFunction() {
-                    fetch('/runKotlinFunction')
+fun generateHTMLContent(boolValue: Boolean): String =
+    createHTML().html {
+        head {
+            js(
+                """
+                // noinspection JSUnusedLocalSymbols
+                function changeBool() {
+                    fetch('/changeBool', { method: 'POST' })
                         .then(response => response.text())
-                        .then(data => location.reload());
+                        .then(() => location.reload());
                 }
-                """.trimIndent()
+                """
+                    .trimIndent())
+        }
+        body {
+            div {
+                center(fontSize = "20px", fontFamily = "Verdana, sans-serif")
+                p { +"bool: $boolValue" }
+                button {
+                    onClick = "changeBool()"
+                    +"Run Kotlin Function"
+                }
             }
         }
     }
-    body {
-        div {
-            center(fontSize = "20px", fontFamily = "Verdana, sans-serif")
-            a("https://kotlinlang.org") {
-                target = ATarget.blank
-                +"Kotlin main site (bool: $boolValue)"
-            }
-            button {
-                onClick = "callKotlinFunction()"
-                +"Run Kotlin Function"
-            }
-        }
-    }
+
+private fun HEAD.js(script: String) {
+    script { unsafe { +script } }
 }
 
-fun server() = embeddedServer(Netty, port = 8080) {
-    routing {
-        get("/") {
-            call.respondText(generateHTMLContent(bool), ContentType.Text.Html)
-        }
-        get("/runKotlinFunction") {
-            bool = !bool
-            call.respondText("Kotlin function executed!", ContentType.Text.Plain)
+fun server() =
+    embeddedServer(Netty, port = 82) {
+        routing {
+            get("/") { call.respondText(generateHTMLContent(bool), ContentType.Text.Html) }
+            post("/changeBool") {
+                bool = !bool
+                call.respondText("Boolean value changed!", ContentType.Text.Plain)
+            }
         }
     }
-}
 
 fun main() {
     server().start(wait = true)
