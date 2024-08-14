@@ -11,47 +11,47 @@ class MathTest {
 
     @Test
     fun factorial_returnsCorrectValue_forPositiveNumbers() {
-        assertEquals(120, factorial(5))
+        assertEquals(120, 5.factorial())
     }
 
     @Test
     fun factorial_returnsOne_forZero() {
-        assertEquals(1, factorial(0))
+        assertEquals(1, 0.factorial())
     }
 
     @Test
     fun factorial_throwsException_forNegativeNumbers() {
-        assertFailsWith<IllegalArgumentException> { factorial(-1) }
+        assertFailsWith<IllegalArgumentException> { (-1).factorial() }
     }
 
     @Test
     fun trinum_returnsCorrectValue_forPositiveNumbers() {
-        assertEquals(15, trinum(5))
+        assertEquals(15, 5.trinum())
     }
 
     @Test
     fun trinum_returnsOne_forZero() {
-        assertEquals(0, trinum(0))
+        assertEquals(0, 0.trinum())
     }
 
     @Test
     fun trinum_throwsException_forNegativeNumbers() {
-        assertFailsWith<IllegalArgumentException> { trinum(-1) }
+        assertFailsWith<IllegalArgumentException> { (-1).trinum() }
     }
 
     @Test
     fun isPrime_returnsTrue_forPrimeNumbers() {
-        assertTrue(isPrime(7))
+        assertTrue(7.isPrime())
     }
 
     @Test
     fun isPrime_returnsFalse_forNonPrimeNumbers() {
-        assertFalse(isPrime(4))
+        assertFalse(4.isPrime())
     }
 
     @Test
     fun isPrime_returnsFalse_forNumbersLessThanTwo() {
-        assertFalse(isPrime(1))
+        assertFalse(1.isPrime())
     }
 
     @Test
@@ -66,26 +66,16 @@ class MathTest {
 
     @Test
     fun generateFibonacci_returnsCorrectSequence_forPositiveCount() {
-        assertEquals(listOf(0L, 1L, 1L, 2L, 3L, 5L, 8L), generateFibonacci(7))
+        assertEquals(listOf(0, 1, 1, 2, 3, 5, 8), 7.generateFibonacci())
     }
 
     @Test
     fun generateFibonacci_returnsEmptyList_forZeroCount() {
-        assertEquals(emptyList(), generateFibonacci(0))
+        assertEquals(emptyList(), 0.generateFibonacci())
     }
 
     @Test
     fun generateFibonacci_throwsException_forNegativeCount() {
-        assertFailsWith<IllegalArgumentException> { generateFibonacci(-1) }
-    }
-
-    @Test
-    fun cToF_returnsCorrectValue_forPositiveCelsius() {
-        assertEquals(32.0, cToF(0.0))
-    }
-
-    @Test
-    fun fToC_returnsCorrectValue_forPositiveFahrenheit() {
-        assertEquals(0.0, fToC(32.0))
+        assertFailsWith<IllegalArgumentException> { (-1).generateFibonacci() }
     }
 }

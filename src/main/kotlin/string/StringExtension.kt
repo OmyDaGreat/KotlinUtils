@@ -56,10 +56,7 @@ fun String.isNumeric(): Boolean {
  * @return The string with the first letter capitalized.
  */
 fun String.capitalizeFirstLetter(): String {
-    if (isNullOrEmpty()) {
-        return this
-    }
-    return this[0].uppercaseChar().toString() + substring(1)
+    return replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
 }
 
 /**
@@ -69,13 +66,7 @@ fun String.capitalizeFirstLetter(): String {
  * @return The string in camel case.
  */
 fun String.toCamelCase(): String {
-    if (isNullOrEmpty()) {
-        return this
-    }
-    val words = split("\\s+".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-    val camelCaseString = StringBuilder()
-    for (word in words) {
-        camelCaseString.append(word.lowercase().capitalizeFirstLetter())
-    }
-    return camelCaseString.toString()
+    return split("\\s+".toRegex()).joinToString("") { it.lowercase().capitalizeFirstLetter() }
 }
+
+// On 8/12/2024, 9:47 AM, Theodore Vang helped Owen Tang with math :D
