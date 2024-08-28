@@ -48,22 +48,4 @@ infix fun <T : Comparable<T>> T.min(other: T): T = if (this < other) this else o
  * @receiver The base number to be raised to the power of the exponent.
  * @throws IllegalArgumentException if the type is unsupported.
  */
-inline infix fun <reified T : Number> T.pow(exponent: Int) =
-  typeReturn<T>(this.toDouble().pow(exponent))
-
-/**
- * Converts the result of a power calculation to the appropriate type.
- *
- * @param T The type of the number, which must implement the Number interface.
- * @param result The result of the power calculation as a Double.
- * @return The result of the power calculation converted to the appropriate type.
- * @throws IllegalArgumentException if the type is unsupported.
- */
-inline fun <reified T : Number> typeReturn(result: Double) =
-  when (T::class) {
-    Int::class -> result.toInt() as T
-    Long::class -> result.toLong() as T
-    Float::class -> result.toFloat() as T
-    Double::class -> result as T
-    else -> throw IllegalArgumentException("Unsupported type")
-  }
+inline infix fun <reified T : Number> T.pow(exponent: Int) = this.toDouble().pow(exponent)
