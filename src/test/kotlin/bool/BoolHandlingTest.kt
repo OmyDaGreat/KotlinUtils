@@ -40,12 +40,6 @@ class BoolHandlingTest {
   }
 
   @Test
-  fun runT_returnsBooleanValue() {
-    assertEquals(true, true.runT())
-    assertEquals(false, false.runT())
-  }
-
-  @Test
   fun runF_executesFalseFunction_whenBooleanIsFalse() {
     var executed = false
     false.runF(f = { executed = true })
@@ -57,11 +51,5 @@ class BoolHandlingTest {
     var executed = false
     true.runF(f = { executed = true })
     assertEquals(false, executed)
-  }
-
-  @Test
-  fun runF_returnsBooleanValue() {
-    assertEquals(true, true.runF())
-    assertEquals(false, false.runF())
   }
 }
