@@ -1,4 +1,4 @@
-package io.github.omydagreat.kotlinutils.string
+package string
 
 import java.util.*
 

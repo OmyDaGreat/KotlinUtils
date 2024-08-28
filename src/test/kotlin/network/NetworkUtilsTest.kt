@@ -1,6 +1,5 @@
 package network
 
-import io.github.omydagreat.kotlinutils.network.*
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import kotlinx.coroutines.runBlocking

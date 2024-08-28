@@ -1,4 +1,4 @@
-package io.github.omydagreat.kotlinutils.network
+package network
 
 import io.ktor.client.*
 import io.ktor.client.call.*

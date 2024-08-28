@@ -1,4 +1,4 @@
-package io.github.omydagreat.kotlinutils.num
+package num
 
 import kotlin.math.sqrt
 

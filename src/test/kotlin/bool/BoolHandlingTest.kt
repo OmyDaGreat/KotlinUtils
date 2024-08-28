@@ -1,8 +1,5 @@
 package bool
 
-import io.github.omydagreat.kotlinutils.bool.run
-import io.github.omydagreat.kotlinutils.bool.runF
-import io.github.omydagreat.kotlinutils.bool.runT
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

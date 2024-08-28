@@ -1,6 +1,5 @@
 package string
 
-import io.github.omydagreat.kotlinutils.string.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
