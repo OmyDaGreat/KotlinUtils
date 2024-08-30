@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     kotlin("jvm") version "2.0.0"
     `java-library`
@@ -6,7 +8,15 @@ plugins {
 
 group = "io.github.omydagreat.kotlinutils"
 
-version = "0.1"
+val versionPropertiesFile = rootProject.file("version.properties")
+if (versionPropertiesFile.exists()) {
+    val versionProps = Properties().apply {
+        load(versionPropertiesFile.inputStream())
+    }
+    version = versionProps.getProperty("VERSION_NAME")
+} else {
+    version = "0.1.0" // Default version if no properties file
+}
 
 repositories {
     mavenCentral()
