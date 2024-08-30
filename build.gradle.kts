@@ -7,7 +7,7 @@ plugins {
 
 group = "io.github.omydagreat.kotlinutils"
 
-version = "1.1"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
