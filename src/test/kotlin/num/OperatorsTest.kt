@@ -59,18 +59,65 @@ class OperatorsTest {
 
   @Test
   fun powerOfNumber() {
-    assertEquals(8, 2 pow 3)
+    assertEquals(8.0, 2 pow 3)
   }
 
   @Test
   fun powerOfNumberWithDifferentTypes() {
-    assertEquals(8L, 2L pow 3)
+    assertEquals(8.0, 2L pow 3)
     assertEquals(8.0, 2.0 pow 3)
-    assertEquals(8.0f, 2.0f pow 3)
+    assertEquals(8.0, 2.0f pow 3)
   }
 
   @Test
-  fun powerOfNumberWithUnsupportedTypeThrowsException() {
-    assertFailsWith<IllegalArgumentException> { 2.toByte() pow 3 }
+  fun gcdOfTwoPositiveNumbers() {
+    assertEquals(6, 54 gcd 24)
+  }
+
+  @Test
+  fun gcdOfPositiveAndNegativeNumber() {
+    assertEquals(6, 54 gcd -24)
+  }
+
+  @Test
+  fun gcdOfTwoNegativeNumbers() {
+    assertEquals(-6, -54 gcd -24)
+  }
+
+  @Test
+  fun gcdWithZero() {
+    assertEquals(54, 54 gcd 0)
+    assertEquals(24, 0 gcd 24)
+  }
+
+  @Test
+  fun gcdOfTwoZeros() {
+    assertEquals(0, 0 gcd 0)
+  }
+
+  @Test
+  fun lcmOfTwoPositiveNumbers() {
+    assertEquals(216, 54 lcm 24)
+  }
+
+  @Test
+  fun lcmOfPositiveAndNegativeNumber() {
+    assertEquals(-216, 54 lcm -24)
+  }
+
+  @Test
+  fun lcmOfTwoNegativeNumbers() {
+    assertEquals(-216, -54 lcm -24)
+  }
+
+  @Test
+  fun lcmWithZero() {
+    assertEquals(0, 54 lcm 0)
+    assertEquals(0, 0 lcm 24)
+  }
+
+  @Test
+  fun lcmOfTwoZeros() {
+    assertThrows<ArithmeticException> {0 lcm 0}
   }
 }

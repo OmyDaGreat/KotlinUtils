@@ -46,6 +46,32 @@ infix fun <T : Comparable<T>> T.min(other: T): T = if (this < other) this else o
  * @param exponent The exponent to which the number is to be raised.
  * @return The result of raising the number to the given exponent.
  * @receiver The base number to be raised to the power of the exponent.
- * @throws IllegalArgumentException if the type is unsupported.
  */
-inline infix fun <reified T : Number> T.pow(exponent: Int) = this.toDouble().pow(exponent)
+infix fun <T : Number> T.pow(exponent: Int) = this.toDouble().pow(exponent)
+
+/**
+ * Computes the greatest common divisor (GCD) of two integers using the Euclidean algorithm.
+ *
+ * @param other The second integer.
+ * @return The GCD of the two integers.
+ * @receiver The first integer.
+ */
+infix fun Int.gcd(other: Int): Int {
+  var a = this
+  var b = other
+  while (b != 0) {
+    val temp = b
+    b = a % b
+    a = temp
+  }
+  return a
+}
+
+/**
+ * Computes the least common multiple (LCM) of two integers.
+ *
+ * @param other The second integer.
+ * @return The LCM of the two integers.
+ * @receiver The first integer.
+ */
+infix fun Int.lcm(other: Int): Int = (this * other) / (this gcd other)
