@@ -75,3 +75,12 @@ infix fun Int.gcd(other: Int): Int {
  * @receiver The first integer.
  */
 infix fun Int.lcm(other: Int): Int = (this * other) / (this gcd other)
+
+/**
+ * Checks if the number is divisible by another number.
+ *
+ * @param other The divisor.
+ * @return True if the number is divisible by the other number, false otherwise.
+ * @receiver The dividend.
+ */
+infix fun Int.isDivisibleBy(other: Int): Boolean = this % other == 0

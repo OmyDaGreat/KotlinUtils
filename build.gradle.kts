@@ -1,4 +1,8 @@
-plugins { kotlin("jvm") version "2.0.0" }
+plugins {
+    kotlin("jvm") version "2.0.0"
+    `java-library`
+    `maven-publish`
+}
 
 group = "io.github.omydagreat.kotlinutils"
 
@@ -31,3 +35,21 @@ dependencies {
 tasks.test { useJUnitPlatform() }
 
 kotlin { jvmToolchain(21) }
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/OmyDaGreat/KotlinUtils")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        create<MavenPublication>("gpr") {
+            from(components["java"])
+        }
+    }
+}
