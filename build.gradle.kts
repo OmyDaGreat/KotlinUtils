@@ -40,8 +40,8 @@ publishing {
       name = "KotlinUtils"
       url = uri("https://maven.pkg.github.com/omydagreat/kotlinutils")
       credentials {
-        username = System.getenv("USERNAME") ?: project.findProperty("gpr.user") as String?
-        password = System.getenv("TOKEN") ?: project.findProperty("gpr.key") as String?
+        username = System.getenv("USERNAME") ?: "OmyDaGreat"
+        password = System.getenv("GITHUB_TOKEN")
       }
     }
   }
