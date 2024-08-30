@@ -38,11 +38,13 @@ publishing {
   repositories {
     maven {
       name = "KotlinUtils"
-      url = uri("https://maven.pkg.github.com/OmyDaGreat/KotlinUtils")
+      url = uri("https://maven.pkg.github.com/omydagreat/kotlinutils")
     }
   }
   publications {
     register<MavenPublication>("gpr") {
+      groupId = "io.github.omydagreat"
+      artifactId = "kotlinutils"
       from(components["java"])
     }
   }
