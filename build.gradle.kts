@@ -39,10 +39,6 @@ publishing {
     maven {
       name = "KotlinUtils"
       url = uri("https://maven.pkg.github.com/OmyDaGreat/KotlinUtils")
-      credentials {
-        username = System.getenv("USERNAME")
-        password = System.getenv("TOKEN")
-      }
     }
   }
   publications {
