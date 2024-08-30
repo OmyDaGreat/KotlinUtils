@@ -27,6 +27,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      - name: Grant execute permissions to gradlew
+        run: chmod +x ./gradlew
+
       - name: Build with Gradle
         run: ./gradlew clean build --stacktrace
 
