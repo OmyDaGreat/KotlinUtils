@@ -1,6 +1,7 @@
 plugins {
   kotlin("jvm") version "2.0.0"
   `maven-publish`
+  id("ca.cutterslade.analyze") version "1.10.0"
 }
 
 group = "io.github.omydagreat.kotlinutils"
@@ -22,12 +23,6 @@ dependencies {
   testImplementation(kotlin("test"))
   implementation("org.lighthousegames:logging:$kmlogVersion")
   implementation("org.slf4j:slf4j-simple:$slf4jVersion")
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-  implementation("io.ktor:ktor-client-core:$ktorVersion")
-  implementation("io.ktor:ktor-client-cio:$ktorVersion")
-  implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serialVerison")
-  implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 }
 
 tasks.test { useJUnitPlatform() }

@@ -3,7 +3,6 @@ package num
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import kotlin.test.assertFailsWith
 
 class OperatorsTest {
 
