@@ -1,22 +1,13 @@
-import java.util.Properties
+import java.net.URI
 
 plugins {
     kotlin("jvm") version "2.0.0"
-    `java-library`
     `maven-publish`
 }
 
 group = "io.github.omydagreat.kotlinutils"
 
-val versionPropertiesFile = rootProject.file("version.properties")
-if (versionPropertiesFile.exists()) {
-    val versionProps = Properties().apply {
-        load(versionPropertiesFile.inputStream())
-    }
-    version = versionProps.getProperty("VERSION_NAME")
-} else {
-    version = "0.1.0" // Default version if no properties file
-}
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -50,16 +41,11 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/OmyDaGreat/KotlinUtils")
+            url = URI("https://maven.pkg.github.com/OmyDaGreat/KotlinUtils")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
             }
-        }
-    }
-    publications {
-        create<MavenPublication>("gpr") {
-            from(components["java"])
         }
     }
 }
