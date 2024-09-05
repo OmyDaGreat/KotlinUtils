@@ -5,23 +5,20 @@ plugins {
 }
 
 group = "io.github.omydagreat.kotlinutils"
-version = "1.1.1"
+version = "1.1.2"
 
 repositories {
   mavenCentral()
   maven { url = uri("https://jitpack.io") }
 }
 
-val kmlogVersion = "1.5.0"
-val slf4jVersion = "2.0.13"
-val coroutinesVersion = "1.9.0-RC"
-val kotlinxhtmlVersion = "0.11.0"
-val ktorVersion = "2.3.12"
-val serialVerison = "1.7.1"
+val kermitV = "2.0.4"
+val jbAnnV = "13.0"
 
 dependencies {
   testImplementation(kotlin("test"))
-  implementation("org.lighthousegames:logging:$kmlogVersion")
+  implementation("co.touchlab:kermit:$kermitV")
+  implementation("org.jetbrains:annotations:$jbAnnV")
 }
 
 tasks.test { useJUnitPlatform() }
