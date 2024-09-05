@@ -1,11 +1,11 @@
 plugins {
   kotlin("jvm") version "2.0.0"
   `maven-publish`
-  id("ca.cutterslade.analyze") version "1.10.0"
+  //id("ca.cutterslade.analyze") version "1.10.0"
 }
 
 group = "io.github.omydagreat.kotlinutils"
-version = "1.1.2"
+version = "1.1.3"
 
 repositories {
   mavenCentral()
@@ -13,12 +13,10 @@ repositories {
 }
 
 val kermitV = "2.0.4"
-val jbAnnV = "13.0"
 
 dependencies {
   testImplementation(kotlin("test"))
   implementation("co.touchlab:kermit:$kermitV")
-  implementation("org.jetbrains:annotations:$jbAnnV")
 }
 
 tasks.test { useJUnitPlatform() }
