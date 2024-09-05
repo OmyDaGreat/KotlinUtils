@@ -22,7 +22,6 @@ val serialVerison = "1.7.1"
 dependencies {
   testImplementation(kotlin("test"))
   implementation("org.lighthousegames:logging:$kmlogVersion")
-  implementation("org.slf4j:slf4j-simple:$slf4jVersion")
 }
 
 tasks.test { useJUnitPlatform() }
@@ -44,7 +43,26 @@ publishing {
     register<MavenPublication>("gpr") {
       groupId = "io.github.omydagreat"
       artifactId = "kotlinutils"
+      version = project.version.toString()
       from(components["java"])
+      pom {
+        name.set(project.name)
+        description.set("A utility library for Kotlin")
+        url.set("https://github.com/OmyDaGreat/KotlinUtils")
+
+        licenses {
+          license {
+            name.set("MIT License")
+            url.set("https://opensource.org/licenses/MIT")
+          }
+        }
+
+        scm {
+          connection.set("scm:git:git://github.com/OmyDaGreat/KotlinUtils.git")
+          developerConnection.set("scm:git:ssh://git@github.com:OmyDaGreat/KotlinUtils.git")
+          url.set("https://github.com/OmyDaGreat/KotlinUtils")
+        }
+      }
     }
   }
 }
