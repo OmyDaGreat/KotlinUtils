@@ -10,13 +10,7 @@ import kotlin.math.pow
  * @throws IllegalArgumentException if the integer is negative.
  */
 operator fun Int.not(): Int {
-  require(this >= 0) { "Factorial is not defined for negative numbers" }
-
-  tailrec fun tailrecHelper(n: Int, acc: Int): Int {
-    return if (n <= 1) acc else tailrecHelper(n - 1, n * acc)
-  }
-
-  return tailrecHelper(this, 1)
+  return this.`!`
 }
 
 /**

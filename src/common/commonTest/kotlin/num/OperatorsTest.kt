@@ -1,8 +1,6 @@
 package num
 
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
+import kotlin.test.*
 
 class OperatorsTest {
 
@@ -33,7 +31,7 @@ class OperatorsTest {
 
   @Test
   fun factorialOfNegativeNumberThrowsException() {
-    assertThrows<IllegalArgumentException> { !-1 }
+    assertFailsWith<IllegalArgumentException> { !-1 }
   }
 
   @Test
@@ -117,7 +115,7 @@ class OperatorsTest {
 
   @Test
   fun lcmOfTwoZeros() {
-    assertThrows<ArithmeticException> {0 lcm 0}
+    assertFailsWith<ArithmeticException> { 0 lcm 0 }
   }
 
   @Test
@@ -127,6 +125,6 @@ class OperatorsTest {
     assertEquals(true, 15 isDivisibleBy 5)
     assertEquals(false, 15 isDivisibleBy 4)
     assertEquals(true, 0 isDivisibleBy 1)
-    assertThrows<ArithmeticException> { 1 isDivisibleBy 0 } // This will throw an ArithmeticException
+    assertFailsWith<ArithmeticException> { 1 isDivisibleBy 0 }
   }
 }

@@ -1,11 +1,10 @@
 plugins {
-  kotlin("jvm") version "2.0.0"
+  kotlin("multiplatform") version "2.0.0"
   `maven-publish`
-  //id("ca.cutterslade.analyze") version "1.10.0"
 }
 
-group = "io.github.omydagreat.kotlinutils"
-version = "1.1.3"
+group = "io.github.omydagreat"
+version = "1.1.4"
 
 repositories {
   mavenCentral()
@@ -14,14 +13,41 @@ repositories {
 
 val kermitV = "2.0.4"
 
-dependencies {
-  testImplementation(kotlin("test"))
-  implementation("co.touchlab:kermit:$kermitV")
+kotlin {
+  jvm()
+  js(IR) {
+    browser()
+    nodejs()
+  }
+  linuxX64()
+  macosX64()
+  macosArm64()
+
+  sourceSets {
+    val commonMain by getting {
+      kotlin.srcDirs("src/common/commonMain/kotlin")
+      dependencies {
+        implementation("co.touchlab:kermit:$kermitV")
+      }
+    }
+    val commonTest by getting {
+      kotlin.srcDirs("src/common/commonTest/kotlin")
+      dependencies {
+        implementation(kotlin("test"))
+      }
+    }
+    val jvmMain by getting
+    val jvmTest by getting
+    val jsMain by getting
+    val jsTest by getting
+    val linuxX64Main by getting
+    val linuxX64Test by getting
+    val macosX64Main by getting
+    val macosX64Test by getting
+    val macosArm64Main by getting
+    val macosArm64Test by getting
+  }
 }
-
-tasks.test { useJUnitPlatform() }
-
-kotlin { jvmToolchain(21) }
 
 publishing {
   repositories {
@@ -36,10 +62,10 @@ publishing {
   }
   publications {
     register<MavenPublication>("gpr") {
+      from(components["kotlin"])
       groupId = "io.github.omydagreat"
       artifactId = "kotlinutils"
       version = project.version.toString()
-      from(components["java"])
       pom {
         name.set(project.name)
         description.set("A utility library for Kotlin")

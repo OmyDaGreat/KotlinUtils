@@ -1,5 +1,6 @@
 package bool
 
+@Deprecated("I would suggest chaining the runT and runF infixes. This may be removed soon.")
 /**
  * Executes one of two functions based on the Boolean value.
  *
